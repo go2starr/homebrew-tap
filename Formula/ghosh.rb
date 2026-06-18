@@ -16,9 +16,11 @@ class Ghosh < Formula
   def install
     odie "this prebuilt libghostty-vt package is currently macOS arm64 only" unless OS.mac? && Hardware::CPU.arm?
 
-    resource("ghostty-vt").stage buildpath
+    vt_dir = buildpath/"ghostty-vt"
+    vt_dir.mkpath
+    resource("ghostty-vt").stage vt_dir
 
-    ENV["GHOSTTY_VT_DIR"] = buildpath/"ghostty-vt"
+    ENV["GHOSTTY_VT_DIR"] = vt_dir
     ENV["LIBCLANG_PATH"] = Formula["llvm"].opt_lib/shared_library("libclang")
     ENV.prepend_path "PATH", Formula["llvm"].opt_bin
 
