@@ -5,6 +5,12 @@ class Ghosh < Formula
   sha256 "932e50ce37b73d57ae20e090811e518626679ebd8b277faa1cd7c8aef2102730"
   version "0.1.0"
 
+  bottle do
+    root_url "https://github.com/go2starr/homebrew-tap/releases/download/ghosh-0.1.0"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_tahoe: "878e13c34c61735c0b30e6803d9c6e522df0c2c4859278534efe581e1b7c043b"
+  end
+
   depends_on "llvm" => :build
   depends_on "rust" => :build
 
